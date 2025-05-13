@@ -20,11 +20,6 @@
             const scriptURL = urlInput.value.trim();
 
             if (scriptURL) {
-                // Check if the query parameter 'runScript' exists and is 'true'
-                const urlParams = new URLSearchParams(window.location.search);
-                const runScript = urlParams.get('runScript');
-
-                if (runScript === 'true') {
                     // Dynamically create a script element and load the JS file
                     const script = document.createElement('script');
                     script.src = scriptURL;
@@ -42,8 +37,6 @@
 
                     // Append the script to the document's body to run it
                     document.body.appendChild(script);
-                } else {
-                    alert('Query parameter "runScript=true" not found in the URL. Script not executed.');
                 }
             } else {
                 alert('Please enter a valid URL to the JavaScript file.');
