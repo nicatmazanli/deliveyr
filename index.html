@@ -3,10 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script></script>
+    <title>Load and Run JS from URL</title>
 </head>
 <body>
-	
+
+    <h1>Enter the URL of a JavaScript File</h1>
+
+    <!-- Input for the URL of the JS file -->
+    <input type="text" id="jsFileURL" placeholder="Enter JavaScript URL" />
+    <button onclick="loadAndRunJS()">Load and Run Script</button>
+
+    <script>
+        // Function to load and run the JS file from the URL
+        function loadAndRunJS() {
+            const urlInput = document.getElementById('jsFileURL');
+            const scriptURL = urlInput.value.trim();
+
+            if (scriptURL) {
+                // Check if the query parameter 'runScript' exists and is 'true'
+                const urlParams = new URLSearchParams(window.location.search);
+                const runScript = urlParams.get('runScript');
+
+                if (runScript === 'true') {
+                    // Dynamically create a script element and load the JS file
+                    const script = document.createElement('script');
+                    script.src = scriptURL;
+                    script.type = 'text/javascript';
+
+                    // Handle successful loading of the script
+                    script.onload = function() {
+                        alert('JavaScript file loaded and executed.');
+                    };
+
+                    // Handle error if the script can't be loaded
+                    script.onerror = function() {
+                        alert('Error loading the script from the URL.');
+                    };
+
+                    // Append the script to the document's body to run it
+                    document.body.appendChild(script);
+                } else {
+                    alert('Query parameter "runScript=true" not found in the URL. Script not executed.');
+                }
+            } else {
+                alert('Please enter a valid URL to the JavaScript file.');
+            }
+        }
+    </script>
+
 </body>
 </html>
