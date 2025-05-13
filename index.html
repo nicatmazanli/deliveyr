@@ -4,15 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Load and Run JS from URL</title>
-</head>
-<body>
-
-    <h1>Enter the URL of a JavaScript File</h1>
-
-    <!-- Input for the URL of the JS file -->
-    <input type="text" id="jsFileURL" placeholder="Enter JavaScript URL" />
-    <button onclick="loadAndRunJS()">Load and Run Script</button>
-
     <script>
         // Function to load and run the JS file from the URL
         function loadAndRunJS() {
@@ -37,12 +28,22 @@
 
                     // Append the script to the document's body to run it
                     document.body.appendChild(script);
-                }
+                
             } else {
                 alert('Please enter a valid URL to the JavaScript file.');
             }
         }
     </script>
 
+</head>
+<body>
+
+    <h1>Enter the URL of a JavaScript File</h1>
+
+    <!-- Input for the URL of the JS file -->
+    <input type="text" id="jsFileURL" placeholder="Enter JavaScript URL" />
+    <button onclick="loadAndRunJS()">Load and Run Script</button>
+
+    
 </body>
 </html>
